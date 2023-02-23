@@ -130,6 +130,8 @@ footer {
     letter-spacing: 1.75px;
 }
 
+/* back to top of page button */
+
 .footerTopContainer {
     background-color: rgb(90, 90, 107);
     color: white;
@@ -145,5 +147,7 @@ footer {
     list-style: none;
     font-size: 14px;
 }
+
+/* Home Body css */
 
 
