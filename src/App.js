@@ -1,10 +1,21 @@
 import React from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import { Routes, Route } from 'react-router-dom';
+import HomeBody from './components/HomeBody';
 
-
-function App() {
+const App = () => {
   return (
     <div>
-      <h1>Hello world</h1>
+      <>
+        <Header />
+        <HomeBody />
+        <Footer />
+        <Routes>
+          <Route path='/Header' element={<Header />} />
+          <Route path='/Footer' element={<Footer />} />
+        </Routes>
+      </>
     </div>
   );
 }
