@@ -14,49 +14,49 @@ const Footer = () => {
                         <div className='footerRow'>
                             <ol>
                                 <div className='title'>
-                                    <li>Title</li>
+                                    <li>About Us</li>
                                 </div>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
+                                <li>About Shamazon</li>
+                                <li>Shamazon Newsletter</li>
+                                <li>Careers</li>
+                                <li>History</li>
+                                <li>Management</li>
                             </ol>
                         </div>
                         <div className='footerRow'>
                             <ol>
                                 <div className='title'>
-                                    <li>Title</li>
+                                    <li>Our products</li>
                                 </div>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
+                                <li>Apple products</li>
+                                <li>Microsoft products</li>
+                                <li>Samsung products</li>
+                                <li>Other products</li>
+                                <li>Custom products</li>
                             </ol>
                         </div>
                         <div className='footerRow'>
                             <ol>
                                 <div className='title'>
-                                    <li>Title</li>
+                                    <li>Our reward program</li>
                                 </div>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
+                                <li>credit card</li>
+                                <li>debit card</li>
+                                <li>coupons</li>
+                                <li>discount</li>
+                                <li>holidays</li>
                             </ol>
                         </div>
                         <div className='footerRow'>
                             <ol>
                                 <div className='title'>
-                                    <li>Title</li>
+                                    <li>Contact us</li>
                                 </div>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
-                                <li>Text</li>
+                                <li>Phone: xxx-xxx-xxxx</li>
+                                <li>Emails: xxx.xxx@gmail.com</li>
+                                <li>Chat with us</li>
+                                <li>24/7 customer service</li>
+                                <li>Address: xxx,xxx,xxx,xxx</li>
                             </ol>
                         </div>
                     </div>
