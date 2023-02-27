@@ -3,7 +3,10 @@ const {
   getUserByToken,
   createUser,
   authenticate
-} = require('./User');
+} = require('./users');
+const {
+  createProduct
+} = require('./Products');
 
 const syncTables = async()=> {
   const SQL = `
@@ -52,7 +55,7 @@ const syncTables = async()=> {
 
 const syncAndSeed = async()=> {
   await syncTables();
-  const [moe, lucy, MacBook, Airpods, AppleWatch]  = await Promise.all([
+  const [moe, lucy]  = await Promise.all([
     createUser({
       username: 'moe',
       password: 'moe_password'
@@ -60,26 +63,30 @@ const syncAndSeed = async()=> {
     createUser({
       username: 'lucy',
       password: 'lucy_password'
-    }),
-    createProduct({
-      name: 'MacBook',
-      price: '$500',
-      description: 'laptop'
-    }),
-    createProduct({
-      name: 'Airpods',
-      price: '$250',
-      description: 'earbuds'
-    }),
-    createProduct({
-      name: 'AppleWatch',
-      price: '$350',
-      description: 'electronic_watches'
-    }),
+    })
   ]);
   console.log('--- seeded users ---');
   console.log(moe);
   console.log(lucy);
+
+  console.log('--- seed products ---');
+  const [MacBook, Airpods, AppleWatch]  = await Promise.all([
+    createProduct({
+      name: 'MacBook',
+      price: '500',
+      description: 'laptop'
+    }),
+    createProduct({
+      name: 'Airpods',
+      price: '250',
+      description: 'earbuds'
+    }),
+    createProduct({
+      name: 'AppleWatch',
+      price: '350',
+      description: 'electronic_watches'
+    }),
+  ]);
   console.log(MacBook);
   console.log(Airpods);
   console.log(AppleWatch);

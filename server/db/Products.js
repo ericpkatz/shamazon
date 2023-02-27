@@ -1,6 +1,6 @@
 const client = require('./client');
 
-async function createProducts({name, price, description}){
+async function createProduct({name, price, description}){
     try{
         const product = `
         INSERT INTO products(name, price, description)
@@ -46,7 +46,7 @@ async function getAllProducts(){
 }
 
 module.exports = {
-    createProducts,
+    createProduct,
     getProductById,
     getAllProducts
 };
