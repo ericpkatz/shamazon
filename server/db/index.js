@@ -29,7 +29,8 @@ const syncTables = async()=> {
   CREATE TABLE products(
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
-    price INTEGER
+    price INTEGER,
+    description VARCHAR(255)
   );
 
   CREATE TABLE cart_products(
@@ -51,7 +52,7 @@ const syncTables = async()=> {
 
 const syncAndSeed = async()=> {
   await syncTables();
-  const [moe, lucy]  = await Promise.all([
+  const [moe, lucy, MacBook, Airpods, AppleWatch]  = await Promise.all([
     createUser({
       username: 'moe',
       password: 'moe_password'
@@ -59,11 +60,30 @@ const syncAndSeed = async()=> {
     createUser({
       username: 'lucy',
       password: 'lucy_password'
-    })
+    }),
+    createProduct({
+      name: 'MacBook',
+      price: '$500',
+      description: 'laptop'
+    }),
+    createProduct({
+      name: 'Airpods',
+      price: '$250',
+      description: 'earbuds'
+    }),
+    createProduct({
+      name: 'AppleWatch',
+      price: '$350',
+      description: 'electronic_watches'
+    }),
   ]);
   console.log('--- seeded users ---');
   console.log(moe);
   console.log(lucy);
+  console.log(MacBook);
+  console.log(Airpods);
+  console.log(AppleWatch);
+
 };
 
 
