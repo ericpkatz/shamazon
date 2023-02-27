@@ -1,13 +1,13 @@
 const client = require('./client');
 
-async function createProducts({name, price}){
+async function createProduct({name, price, description}){
     try{
         const product = `
-        INSERT INTO products(name, price)
-        VALUES($1,$2)
+        INSERT INTO products(name, price, description)
+        VALUES($1,$2,$3)
         RETURNING *
         `;
-        const response = await client.query(product, [name, price]);
+        const response = await client.query(product, [name, price, description]);
         return response.rows[0];
     }
     catch(error){
@@ -46,7 +46,7 @@ async function getAllProducts(){
 }
 
 module.exports = {
-    createProducts,
+    createProduct,
     getProductById,
     getAllProducts
 };

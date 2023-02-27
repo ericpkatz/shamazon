@@ -4,6 +4,9 @@ const {
   createUser,
   authenticate
 } = require('./users');
+const {
+  createProduct
+} = require('./Products');
 
 const syncTables = async()=> {
   const SQL = `
@@ -29,7 +32,8 @@ const syncTables = async()=> {
   CREATE TABLE products(
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
-    price INTEGER
+    price INTEGER,
+    description VARCHAR(255)
   );
 
   CREATE TABLE cart_products(
@@ -64,6 +68,29 @@ const syncAndSeed = async()=> {
   console.log('--- seeded users ---');
   console.log(moe);
   console.log(lucy);
+
+  console.log('--- seed products ---');
+  const [MacBook, Airpods, AppleWatch]  = await Promise.all([
+    createProduct({
+      name: 'MacBook',
+      price: '500',
+      description: 'laptop'
+    }),
+    createProduct({
+      name: 'Airpods',
+      price: '250',
+      description: 'earbuds'
+    }),
+    createProduct({
+      name: 'AppleWatch',
+      price: '350',
+      description: 'electronic_watches'
+    }),
+  ]);
+  console.log(MacBook);
+  console.log(Airpods);
+  console.log(AppleWatch);
+
 };
 
 
