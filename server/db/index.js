@@ -3,7 +3,7 @@ const {
   getUserByToken,
   createUser,
   authenticate
-} = require('./User');
+} = require('./users');
 
 const syncTables = async()=> {
   const SQL = `
@@ -35,7 +35,7 @@ const syncTables = async()=> {
   CREATE TABLE cart_products(
     id SERIAL PRIMARY KEY,
     cart_id INTEGER REFERENCES carts(id),
-    products_id INTEGER REFERENCES products(id),
+    product_id INTEGER REFERENCES products(id),
     quantity INTEGER
   );
 
