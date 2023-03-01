@@ -1,5 +1,5 @@
 const express = require("express");
-const UserRouter = express.Router();
+const usersRouter = express.Router();
 
 const jwt = require("jsonwebtoken");
 
@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const { tokenAuth, sliceToken } = require("./utils");
 const { createUser, getUserByToken, getUserByUsername} = require("../db/users");
 
-UserRouter.post("/register", async (req, res, next) => {
+usersRouter.post("/register", async (req, res, next) => {
     const {username, password} = req.body;
     try {
         if (password.length <= 7) {
@@ -44,7 +44,7 @@ UserRouter.post("/register", async (req, res, next) => {
     }
 });
 
-UserRouter.post('/login', async(res, req, next) => {
+usersRouter.post('/login', async(res, req, next) => {
     const {username, password} = req.body;
 
     if (!username || !password) {
@@ -80,7 +80,7 @@ UserRouter.post('/login', async(res, req, next) => {
 
 });
 
-UserRouter.get('/me', tokenAuth, async (req, res, next) => {
+usersRouter.get('/me', tokenAuth, async (req, res, next) => {
 
     try{
      const userInfo = sliceToken(req);

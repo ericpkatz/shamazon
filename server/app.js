@@ -6,8 +6,10 @@ app.use(express.json());
 
 
 
+//const router = require("./api")
+//app.use('/api', router)
 
-app.use('/api/auth', require('./api/auth'));
+
 
 app.use((err, req, res, next)=> {
   console.log(err);
