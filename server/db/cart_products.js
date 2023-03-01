@@ -1,12 +1,13 @@
 const client = require('./client');
 
-async function addProductToCart({cartId, productId, quantity}) {
+async function addProductToCart({cartId, productId, quantity, routineId, activityId}) {
     try {
         const {rows} = await client.query(`
         INSERT INTO cart_products("cart_id", "product_id", quantity)
         VALUES($1, $2, $3)
         RETURNING *
-        `, [routineId, activityId])
+        `, [routineId, activityId, cartId, productId, quantity])
+        return rows;
     } catch (error) {
         throw error
     }
@@ -29,7 +30,7 @@ async function updateCartProduct({id, ...fields}){
       }
 }
 
-async function destroyCartProduct(){
+async function destroyCartProduct(id){
     try {
         const {rows} = await client.query(`
         DELETE FROM cart_products
