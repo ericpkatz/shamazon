@@ -13,7 +13,10 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "chalk": "^4.0.0",
+    "cors": "^2.8.5",
+    "web-vitals": "^2.1.4",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
@@ -23,7 +26,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "seed:dev": "nodemon ./server/index.js"
+    "seed:dev": "nodemon ./server/db/seed.js",
+    "seed": "node ./server/db/seed.js",
+    "server:dev": "nodemon ./server/server.js",
+    "server": "node ./server/server.js"
   },
   "eslintConfig": {
     "extends": [

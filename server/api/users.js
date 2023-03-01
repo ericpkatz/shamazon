@@ -102,4 +102,4 @@ usersRouter.get('/me', tokenAuth, async (req, res, next) => {
    
    })
    
-   
+   module.exports = usersRouter

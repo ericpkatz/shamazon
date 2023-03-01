@@ -1,15 +1,18 @@
 const express = require('express');
-const app = express();
 const path = require('path');
+const cors = require("cors")
+const morgan = require("morgan")
+
+const app = express();
+
+app.use(cors())
 app.use(express.json());
+app.use(morgan('dev'))
 
 
 
-
-//const router = require("./api")
-//app.use('/api', router)
-
-
+const router = require('./api')
+app.use('/api', router)
 
 app.use((err, req, res, next)=> {
   console.log(err);
