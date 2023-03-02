@@ -46,7 +46,7 @@ async function destroyCartProduct(id){
 async function getCartProductById(id){
     try {
         const {rows: [cart_product]} = await client.query(`
-        SELECT "cartId", "productId", quantity, id
+        SELECT "cart_id", "product_id", quantity, id
         FROM cart_products
         WHERE id=$1
         `, [id])
@@ -60,9 +60,9 @@ async function getCartProductById(id){
 async function getCartProductByCart({id}){
     try {
         const {rows} = await client.query(`
-        SELECT "cartId", "productId", quantity, id
+        SELECT "cart_id", "product_id", quantity, id
         FROM cart_products
-        WHERE "cartId"=$1;
+        WHERE "cart_id"=$1;
         `,[id])
         return rows;
     } catch (error) {
