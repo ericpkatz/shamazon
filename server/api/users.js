@@ -12,6 +12,7 @@ router.get('/health', async (req, res, next) => {
   });
 
 router.post("/register", async (req, res, next) => {
+    next(error);
     try{
         const {username, password } = req.body
         
@@ -44,7 +45,6 @@ router.post("/register", async (req, res, next) => {
         res.send(response)
         
     } catch (error) {
-        next(error);
     }
 });
 
