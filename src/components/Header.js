@@ -1,8 +1,11 @@
 import React from 'react'
 
 const Header = () => {
+    
     return (
+
         <header>
+            
             <nav>
                 <div className='headerContainer'>
                     <div className='logo'>
@@ -19,7 +22,7 @@ const Header = () => {
                         </ol>
                     </div>
                     <div className='search'>
-                        <form>
+                        <form> 
                             <input type='text' placeholder='Search' />
                             <button type='submit'><img src='/images/search.png' alt='searchbtn' width='25px' /></button>
                         </form>
