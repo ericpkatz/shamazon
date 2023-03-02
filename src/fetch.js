@@ -52,5 +52,24 @@ export const fetchLogin = async (username, password) => {
     }
 }
 
+export const fetchCart = async (token, user_id) =>{
+ try {
+    const response = await fetch('/api/cart',{
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            user_id: user_id,
+        })
+    })
+    const result = await response.json();
+    return result;
+ } catch (error) {
+    console.log('Cannot find the cart')
+    
+ }   
+}
+
 const login = fetchLogin('eric','torres')
 console.log(login)
