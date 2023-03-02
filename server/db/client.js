@@ -1,4 +1,9 @@
-const pg = require('pg');
-const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/shamazon-db');
+const { Pool } = require('pg');
+const connectionString = process.env.DATABASE_URL || 'https://localhost:5432/shamazon-db';
+
+const client = new Pool({
+  connectionString,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
+});
 
 module.exports = client;

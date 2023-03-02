@@ -124,7 +124,7 @@ async function createTables() {
         await dropTables()
         await createTables()
         await createInitialUsers()
-        await createInitialUsers()
+        await createInitialProducts()
     } catch (error) {
         console.log("error during rebuildDB")
         throw error
