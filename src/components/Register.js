@@ -5,7 +5,15 @@ export const Register = () => {
     const [password, setPassword] = useState('')
 return (
     <div>
-        <form>
+        <form onSubmit={ async (ev) =>  {
+            
+            try {
+                ev.preventDefault();
+            } catch (error) {
+                console.error(error)
+            }
+
+        }}>
             <h1>Create Your Account!</h1>
         <input placeholder='username' value={username} onChange= {(ev) => {setUsername(ev.target.value)}}>Username</input>
         <input placeholder='password' value={password} onChange= {(ev) => {setPassword(ev.target.value)}}>Password</input>
