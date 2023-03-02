@@ -4,12 +4,19 @@ const JWT = process.env.JWT;
 
 
 const createUser = async({ username, password }) => {
-  const SQL = `
-    INSERT INTO users(username, password)
-    VALUES($1, $2) RETURNING *
-  `;
-  const response = await client.query(SQL, [ username, password ]);
-  return response.rows[0];
+  console.log(username,password)
+  try {
+    const { rows: [user] } = await client.query(`
+    INSERT INTO users(username, password) 
+    VALUES($1, $2) 
+    RETURNING id, username;
+  `, [username, password]);
+  
+  return user;
+} catch (error) {
+  console.error('error creating user')
+  throw error;
+}
 }
 
 const getUserByToken = async(token) => {

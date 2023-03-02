@@ -1,50 +1,88 @@
 const express = require("express");
-const usersRouter = express.Router();
+const router = express.Router();
 
 const jwt = require("jsonwebtoken");
 
 
 const { tokenAuth, sliceToken } = require("./utils");
-const { createUser, getUserByToken, getUserByUsername} = require("../db/users");
+const { createUser, getUserByToken } = require("../db/users");
 
-usersRouter.post("/register", async (req, res, next) => {
-    const {username, password} = req.body;
-    try {
-        if (password.length <= 7) {
-            next ({
-               error: 'Short Password',
-               message: 'Your password is too short!',
-               name: username, 
-               status: 400
-            });
+router.get('/health', async (req, res, next) => {
+    res.send({ message: "Healthy Users Route." })
+  });
+
+router.post("/register", async (req, res, next) => {
+    try{
+        const {username, password } = req.body
+        
+        
+        const user = await createUser({ username, password })
+        
+        if (!user){
+            res.send({
+                error: "Username Taken",
+                message: `User ${username} is already taken.`,
+                name: "Username Taken"
+            })
         }
-    
-    const newUser = await createUser(req.body);
-    if (!newUser) {
-        next ({
-            error: 'Taken Username',
-            message: `${username} is taken!`,
-            name: username,
-            status: 401
-        });
-    } else {
-        const {id} = newUser;
-        const token = jwt.sign (
-            {id: id, username},
-            process.env.jwt
-        );
-        res.send({
-            message: 'You have succefully registered!',
-            token: token,
-            user: {id:id, username:username}
-        })
-    }
+        if (password.length<8){
+            res.send({
+                error: "Password Too Short!",
+                message: "Password Too Short!",
+                name: "Password Too Short!"
+            })
+        }
+        const response = {
+            message: "Registered",
+            token: "TBD",
+            user: {
+                id: user.id,
+                username: user.username
+            }
+        }
+        
+        res.send(response)
+        
     } catch (error) {
         next(error);
     }
 });
 
-usersRouter.post('/login', async(res, req, next) => {
+// Eric's Code
+
+// const {username, password} = req.body;
+// try {
+//     if (password.length <= 7) {
+//         res.send ({
+//            error: 'Short Password',
+//            message: 'Your password is too short!',
+//            name: username, 
+//            status: 400
+//         });
+//     }
+
+// const newUser = await createUser(req.body);
+// if (!newUser) {
+//     res.send ({
+//         error: 'Taken Username',
+//         message: `${username} is taken!`,
+//         name: username,
+//         status: 401
+//     });
+// } else {
+//     const {id} = newUser;
+//     const token = jwt.sign (
+//         {id: id, username},
+//         process.env.jwt
+//     );
+//     res.send({
+//         message: 'You have succefully registered!',
+//         token: token,
+//         user: {id:id, username:username}
+//     })
+// }
+
+router.post('/login', async(res, req, next) => {
     const {username, password} = req.body;
 
     if (!username || !password) {
@@ -80,7 +118,7 @@ usersRouter.post('/login', async(res, req, next) => {
 
 });
 
-usersRouter.get('/me', tokenAuth, async (req, res, next) => {
+router.get('/me', tokenAuth, async (req, res, next) => {
 
     try{
      const userInfo = sliceToken(req);
@@ -102,4 +140,4 @@ usersRouter.get('/me', tokenAuth, async (req, res, next) => {
    
    })
    
-   module.exports = usersRouter
+   module.exports = router

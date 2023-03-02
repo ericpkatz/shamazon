@@ -1,4 +1,4 @@
-//const { UnauthorizedError } = require("../errors");
+const { UnauthorizedError } = require("../errors")
 const jwt = require("jsonwebtoken")
 
 const tokenAuth = (req, res, next) => {
@@ -6,8 +6,7 @@ const tokenAuth = (req, res, next) => {
 
       if (!token) {
         res.status(401).send({
-          message: 'no token',
-//          UnauthorizedError()
+          message: UnauthorizedError(),
           error: 'No token found',
           name: 'Need to login'
         })
