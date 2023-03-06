@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { fetchRegister } from "../fetch";
 
 export const Register = () => {
     const [username, setUsername] = useState('');
