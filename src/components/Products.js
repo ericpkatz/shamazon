@@ -1,4 +1,4 @@
-import { fetchProducts } from "../fetch";
+// import { fetchProducts } from "../fetch";
 
 export const Products = () => {
     return (

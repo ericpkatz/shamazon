@@ -10,6 +10,14 @@ return (
             
             try {
                 ev.preventDefault();
+                const res = await fetchRegister(username, password);
+                console.log(res);
+                if(!res.error) {
+                    window.localStorage.setItem('token', res.token);
+                    // const redirHome = () => {
+                    //     window.location.href ='/#'
+                    // }
+                }
             } catch (error) {
                 console.error(error)
             }

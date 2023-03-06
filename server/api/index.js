@@ -12,7 +12,7 @@ router.use('/users', usersRouter)
 // const cartRouter = require('./cart');
 // router.use('/cart', cartRouter);
 
-const productsRouter = require('./products');
+const productsRouter = require('./products.js');
 router.use('/products', productsRouter);
 
 router.use((err, req, res, next) => {
