@@ -150,4 +150,47 @@ footer {
 
 /* Home Body css */
 
+.homeContainer {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+}
 
+.homeTitle {
+    padding-top: 20px;
+}
+
+.homeTitle, .homeAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categorieRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categorieRow ol {
+    list-style-type: none;
+    display: flex;
+    padding: 15px;
+}
+
+.singleCategorie {
+    padding: 10px;
+}
+
+.singleCategorieImage {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    display: block;
+}
+
+.singleCategorieText {
+    display: flex;
+    justify-content: center;
+}

@@ -28,11 +28,10 @@ const Footer = () => {
                                 <div className='title'>
                                     <li>Our products</li>
                                 </div>
-                                <li>Apple products</li>
-                                <li>Microsoft products</li>
-                                <li>Samsung products</li>
-                                <li>Other products</li>
-                                <li>Custom products</li>
+                                <li>Apple</li>
+                                <li>Microsoft</li>
+                                <li>Samsung</li>
+                                <li>Other</li>
                             </ol>
                         </div>
                         <div className='footerRow'>
@@ -40,11 +39,11 @@ const Footer = () => {
                                 <div className='title'>
                                     <li>Our reward program</li>
                                 </div>
-                                <li>credit card</li>
-                                <li>debit card</li>
-                                <li>coupons</li>
-                                <li>discount</li>
-                                <li>holidays</li>
+                                <li>Credit card</li>
+                                <li>Debit card</li>
+                                <li>Coupons</li>
+                                <li>Discount</li>
+                                <li>Holidays</li>
                             </ol>
                         </div>
                         <div className='footerRow'>
