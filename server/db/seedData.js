@@ -105,6 +105,21 @@ async function createTables() {
                 name: 'AppleWatch',
                 price: '350',
                 description: 'electronic_watches'
+              },
+              {
+                name: 'Rolex',
+                price: '10000',
+                description: 'luxury_watches'
+              },
+              {
+                name: 'Omega',
+                price: '10000',
+                description: 'luxury_watches'
+              },
+              {
+                name: 'IphoneX',
+                price: '850',
+                description: 'phone'
               }
         ]
         const products = await Promise.all(productsToCreate.map(createProduct))
