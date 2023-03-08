@@ -1,17 +1,22 @@
-import React from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
 
-import { Login, Register } from './components/index'
+import React, {useState, useEffect} from 'react';
+import { Login, Register, Products, Header, Footer } from './components/index'
 import { Routes, Route, Link } from 'react-router-dom';
 import HomeBody from './components/HomeBody';
+import { fetchProducts } from './fetch';
 
 
-import { Products } from './components/Products';
 
 
 
 const App = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(()=>{
+    //setProducts(fetchProducts())
+    console.log(products)
+  })
+
   return (
     <div>
       <>
