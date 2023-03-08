@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { fetchRegister } from "../fetch";
 import { Link } from 'react-router-dom';
 
-export const Register = () => {
+const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
 
@@ -44,5 +44,6 @@ return (
             </div>
         </div>
     )
-
 }
+
+export default Register
