@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { fetchRegister } from "../fetch";
 
-export const Register = () => {
+const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
 return (
@@ -34,3 +34,5 @@ return (
 )
 
 }
+
+export default Register

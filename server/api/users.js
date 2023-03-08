@@ -12,6 +12,7 @@ router.get('/health', async (req, res, next) => {
   });
 
 router.post("/register", async (req, res, next) => {
+    // eslint-disable-next-line no-undef
     next(error);
     try{
         const {username, password } = req.body

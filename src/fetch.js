@@ -14,7 +14,7 @@ export const fetchProducts = async () => {
 
 export const fetchRegister = async (username, password) => {
     try {
-        const response = await fetch('/api/login', {
+        const response = await fetch('/api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'applications/json',
