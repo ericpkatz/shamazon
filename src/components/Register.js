@@ -24,7 +24,10 @@ return (
                 }
 
 
-        }}>
+        } catch (error){
+            throw error
+        }
+    }}>
             <h1>Create Your Account!</h1>
         <input placeholder='username' value={username} onChange= {(ev) => {setUsername(ev.target.value)}}/>
         <input placeholder='password' value={password} onChange= {(ev) => {setPassword(ev.target.value)}}/>
