@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const HomeBody = () => {
   return (
@@ -7,7 +8,7 @@ const HomeBody = () => {
         <h2>Featured Categories</h2>
       </div>
       <div className='homeAll'>
-        <h5>Show all</h5>
+        <h5><Link to='/Products'>Show All</Link></h5>
       </div>
       <div>
         <div className='categorieContainer'>

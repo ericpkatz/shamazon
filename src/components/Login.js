@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+
+import { Link } from 'react-router-dom';
+
 import { fetchLogin } from "../fetch";
+
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
+
 return (
     <div>
         
@@ -30,10 +35,20 @@ return (
         <input placeholder='username' value={username} onChange= {(ev) => {setUsername(ev.target.value)}}/>
         <input placeholder='password' value={password} onChange= {(ev) => {setPassword(ev.target.value)}}/>
 
-        <button className="btn" disabled={!username || !password}>Login</button>
-        </form>
-    </div>
-)
+
+
+                <button className="btn" disabled={!username || !password}>Create Account</button>
+            </form>
+            <div>
+                <nav>
+                    <Link to='/Register'>
+                        Dont have an account? Click here to Register!
+                    </Link>
+                </nav>
+            </div>
+        </div>
+    )
+
 
 }
 

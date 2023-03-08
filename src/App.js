@@ -7,21 +7,26 @@ import { Routes, Route, Link } from 'react-router-dom';
 import HomeBody from './components/HomeBody';
 
 
+import { Products } from './components/Products';
+
 
 
 const App = () => {
   return (
     <div>
       <>
-      <Link to='/login'>Login</Link>
-      <Link to='/register'>Register</Link>
 
         <Header />
-        <HomeBody />
-        <Login/>
         <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
+
+          
+          <Route path='' element={<HomeBody />} />
+          <Route path='/Header' element={<Header />} />
+          <Route path='/Footer' element={<Footer />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/Register' element={<Register />} />
+          <Route path='/Products' element={<Products />} />
+
         </Routes>
         <Footer />
       </>

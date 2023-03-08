@@ -1,15 +1,17 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+
+import { Link } from 'react-router-dom';
+
+
 const Header = () => {
-    
+
     return (
 
         <header>
-            
             <nav>
                 <div className='headerContainer'>
                     <div className='logo'>
-                        <img src='/images/fakeamazon.png' alt='logo' width='65px' />
+                    <Link to=''><img src='/images/fakeamazon.png' alt='logo' width='65px' /></Link>
                     </div>
                     <div className='olContainer'>
                         <ol>
@@ -22,7 +24,7 @@ const Header = () => {
                         </ol>
                     </div>
                     <div className='search'>
-                        <form> 
+                        <form>
                             <input type='text' placeholder='Search' />
                             <button type='submit'><img src='/images/search.png' alt='searchbtn' width='25px' /></button>
                         </form>
@@ -32,7 +34,9 @@ const Header = () => {
                             <div className='profile'>
                                 <div className='profilebtn'>
                                     <img src='/images/profile.png' alt='profilebtn' width='30px' />
-                                    <Link to='login'>Profile</Link>
+
+                                    <li><Link to='/Login'>Profile</Link></li>
+
                                 </div>
                             </div>
                             <div className='checkout'>
