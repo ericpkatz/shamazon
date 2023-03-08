@@ -11,7 +11,7 @@ const Header = () => {
             <nav>
                 <div className='headerContainer'>
                     <div className='logo'>
-                        <img src='/images/fakeamazon.png' alt='logo' width='65px' />
+                    <Link to=''><img src='/images/fakeamazon.png' alt='logo' width='65px' /></Link>
                     </div>
                     <div className='olContainer'>
                         <ol>
@@ -35,7 +35,7 @@ const Header = () => {
                                 <div className='profilebtn'>
                                     <img src='/images/profile.png' alt='profilebtn' width='30px' />
 
-                                    <li><Link to='/Login'>Login</Link></li>
+                                    <li><Link to='/Login'>Profile</Link></li>
 
                                 </div>
                             </div>
