@@ -1,7 +1,9 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { Routes, Route, Link } from 'react-router-dom';
+
+import { Login } from './components/index'
+import { Routes, Route } from 'react-router-dom';
 import HomeBody from './components/HomeBody';
 import { Register } from './components/Register';
 import { Login } from './components/Login';
@@ -16,13 +18,11 @@ const App = () => {
 
         <Header />
         <HomeBody />
-        <Footer />
+        <Login/>
         <Routes>
-        <Route path='/login' element={ <Login/>}/> 
-        <Route path='/register' element={ <Register />}/> 
-          <Route path='/Header' element={<Header />} />
-          <Route path='/Footer' element={<Footer />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
+        <Footer />
       </>
     </div>
   );

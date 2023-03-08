@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { fetchLogin } from "../fetch";
 
-export const Login = () => {
+const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
 return (
@@ -36,3 +36,5 @@ return (
 )
 
 }
+
+export default Login
