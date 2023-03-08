@@ -48,7 +48,10 @@ async function createTables() {
         id SERIAL PRIMARY KEY,
         name VARCHAR(100),
         price INTEGER,
-        description VARCHAR(255)
+        description VARCHAR(255),
+        shipping VARCHAR(255),
+        weight INTEGER,
+        picture VARCHAR(100)
       );
     
       CREATE TABLE cart_products(
