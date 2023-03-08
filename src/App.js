@@ -7,6 +7,8 @@ import { Routes, Route, Link } from 'react-router-dom';
 import HomeBody from './components/HomeBody';
 import { Register } from './components/Register';
 
+import { Products } from './components/Products';
+
 
 
 const App = () => {
@@ -20,7 +22,13 @@ const App = () => {
         <HomeBody />
         <Login/>
         <Routes>
-          <Route path='/login' element={<Login />} />
+
+          <Route path='/Header' element={<Header />} />
+          <Route path='/Footer' element={<Footer />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/Register' element={<Register />} />
+          <Route path='/Products' element={<Products />} />
+
         </Routes>
         <Footer />
       </>
