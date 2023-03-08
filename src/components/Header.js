@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { Link } from 'react-router-dom';
+
 
 const Header = () => {
 
@@ -32,7 +34,9 @@ const Header = () => {
                             <div className='profile'>
                                 <div className='profilebtn'>
                                     <img src='/images/profile.png' alt='profilebtn' width='30px' />
+
                                     <li><Link to='/Login'>Login</Link></li>
+
                                 </div>
                             </div>
                             <div className='checkout'>
