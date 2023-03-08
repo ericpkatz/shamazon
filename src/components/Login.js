@@ -1,17 +1,28 @@
 import React, { useState } from "react";
+import { fetchLogin } from "../fetch";
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
 return (
     <div>
-        <form onSubmit={ async (ev) => {
+        
 
+             <form onSubmit={ async (ev) =>  {
+            
             try {
                 ev.preventDefault();
-
+                const res = await fetchLogin(username, password);
+                console.log(res);
+                if(!res.error) {
+                    window.localStorage.setItem('token', res.token);
+                    const redirHome = () => {
+                        window.location.href ='/'
+                    }
+                    redirHome();
+                }
             } catch (error) {
-                console.error(error);
+                console.error(error)
             }
 
         }}>
