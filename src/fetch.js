@@ -2,7 +2,7 @@
 
 export const fetchProducts = async () => {
     try {
-        const response = await fetch('localhost:3000/api/products', {
+        const response = await fetch('/api/products', {
             method: 'GET'
         })
         const result = await response.json();
@@ -73,7 +73,7 @@ export const fetchCart = async (token, user_id) =>{
 
 export const fetchAllProducts = async () =>{
         try {
-            const response = await fetch('localhost:3000/api/products', {
+            const response = await fetch('/api/products', {
                 method: 'GET'
             })
             const result = await response.json();
