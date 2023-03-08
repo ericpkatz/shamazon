@@ -1,6 +1,7 @@
 // import { fetchProducts } from "../fetch";
 
 export const Products = () => {
+
     return (
         <div>
             <h1>Hello World</h1>
@@ -8,3 +9,5 @@ export const Products = () => {
         </div>
     )
 }
+
+export default Products
