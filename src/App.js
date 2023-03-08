@@ -3,10 +3,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import { Login } from './components/index'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import HomeBody from './components/HomeBody';
 import { Register } from './components/Register';
-import { Login } from './components/Login';
+
 
 
 const App = () => {
