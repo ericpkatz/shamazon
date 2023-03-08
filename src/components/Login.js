@@ -36,7 +36,7 @@ return (
         <input placeholder='password' value={password} onChange= {(ev) => {setPassword(ev.target.value)}}/>
 
 
-                <button className="btn" disabled={!username || !password}>Create Account</button>
+                <button className="btn" disabled={!username || !password}>Login</button>
             </form>
             <div>
                 <nav>
