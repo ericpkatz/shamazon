@@ -15,14 +15,11 @@ const App = () => {
   return (
     <div>
       <>
-      <Link to='/login'>Login</Link>
-      <Link to='/register'>Register</Link>
 
         <Header />
-        <HomeBody />
-        <Login/>
         <Routes>
-
+          
+          <Route path='' element={<HomeBody />} />
           <Route path='/Header' element={<Header />} />
           <Route path='/Footer' element={<Footer />} />
           <Route path='/Login' element={<Login />} />
