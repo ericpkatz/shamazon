@@ -1,8 +1,10 @@
+
 import React, {useState, useEffect} from 'react';
 import { Login, Register, Products, Header, Footer } from './components/index'
 import { Routes, Route, Link } from 'react-router-dom';
 import HomeBody from './components/HomeBody';
 import { fetchProducts } from './fetch';
+
 
 
 
@@ -21,6 +23,7 @@ const App = () => {
 
         <Header />
         <Routes>
+
           
           <Route path='' element={<HomeBody />} />
           <Route path='/Header' element={<Header />} />
