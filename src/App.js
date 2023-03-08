@@ -2,10 +2,10 @@ import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import { Login } from './components/index'
+import { Login, Register } from './components/index'
 import { Routes, Route, Link } from 'react-router-dom';
 import HomeBody from './components/HomeBody';
-import { Register } from './components/Register';
+
 
 import { Products } from './components/Products';
 
@@ -18,6 +18,7 @@ const App = () => {
 
         <Header />
         <Routes>
+
           
           <Route path='' element={<HomeBody />} />
           <Route path='/Header' element={<Header />} />

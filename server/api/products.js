@@ -1,8 +1,8 @@
 const express = require("express");
-const router = express.Router();
+const productsRouter = express.Router();
 const {getAllProducts, getProductById} = require("../db")
 
-router.get("/", async (req, res, next) => {
+productsRouter.get("/", async (req, res, next) => {
     try {
         const products = await getAllProducts()
         res.send(products)
@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
     }
 })
 
-router.get("/:id", async (req,res,next) => {
+productsRouter.get("/:id", async (req,res,next) => {
     const {id} = req.params
     try{
         const product = await getProductById(id)
@@ -23,4 +23,4 @@ router.get("/:id", async (req,res,next) => {
 })
 
 
-module.exports = router;
+module.exports = productsRouter;
