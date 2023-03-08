@@ -14,9 +14,10 @@ return (
                 console.log(res);
                 if(!res.error) {
                     window.localStorage.setItem('token', res.token);
-                    // const redirHome = () => {
-                    //     window.location.href ='/#'
-                    // }
+                    const redirHome = () => {
+                        window.location.href ='/'
+                    }
+                    redirHome();
                 }
             } catch (error) {
                 console.error(error)
@@ -24,8 +25,8 @@ return (
 
         }}>
             <h1>Create Your Account!</h1>
-        <input placeholder='username' value={username} onChange= {(ev) => {setUsername(ev.target.value)}}>Username</input>
-        <input placeholder='password' value={password} onChange= {(ev) => {setPassword(ev.target.value)}}>Password</input>
+        <input placeholder='username' value={username} onChange= {(ev) => {setUsername(ev.target.value)}}/>
+        <input placeholder='password' value={password} onChange= {(ev) => {setPassword(ev.target.value)}}/>
 
         <button className="btn" disabled={!username || !password}>Create Account</button>
         </form>
