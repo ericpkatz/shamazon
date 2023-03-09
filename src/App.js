@@ -4,6 +4,7 @@ import { Login, Register, Products, Header, Footer } from './components/index'
 import { Routes, Route, Link } from 'react-router-dom';
 import HomeBody from './components/HomeBody';
 import { fetchProducts } from './fetch';
+import SingleProduct from './components/SingleProduct';
 
 
 
@@ -28,8 +29,7 @@ const App = () => {
 
         <Header />
         <Routes>
-
-          
+          <Route path='/products/:id' element = {<SingleProduct/>} />
           <Route path='' element={<HomeBody />} />
           <Route path='/Header' element={<Header />} />
           <Route path='/Footer' element={<Footer />} />

@@ -14,9 +14,10 @@ export const fetchProducts = async () => {
 
 export const fetchRegister = async (username, password) => {
     try {
-        const response = await fetch('/api/register', {
+        const response = await fetch('/api/users/register', {
             method: 'POST',
             headers: {
+                
                 'Content-Type': 'applications/json',
             },
             body: JSON.stringify({
@@ -33,7 +34,7 @@ export const fetchRegister = async (username, password) => {
 
 export const fetchLogin = async (username, password) => {
     try {
-        const response = await fetch('/api/login', {
+        const response = await fetch('/api/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'applications/json',
@@ -83,18 +84,14 @@ export const fetchAllProducts = async () =>{
         }
 }
 
-export const fetchSingleView = async (token, name, price, description) =>{
+export const fetchSingleView = async (id) =>{
     try{
-        const response = await fetch('/api/products/:id',{
+
+        const response = await fetch(`/api/products/${id}`,{
+
             headers:{
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({
-                name: name,
-                price: price,
-                description: description,
-        })
         })
         const result = await response.json();
         return result;
@@ -104,5 +101,3 @@ export const fetchSingleView = async (token, name, price, description) =>{
     }
 }
 
-const login = fetchLogin('eric','torres')
-console.log(login)
