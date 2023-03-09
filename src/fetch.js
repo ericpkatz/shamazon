@@ -86,7 +86,9 @@ export const fetchAllProducts = async () =>{
 
 export const fetchSingleView = async (id) =>{
     try{
+
         const response = await fetch(`/api/products/${id}`,{
+
             headers:{
                 'Content-Type': 'application/json',
             },

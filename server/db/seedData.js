@@ -7,7 +7,7 @@ const {
   } = require('./users');
   const {
     createProduct
-  } = require('./Products');
+  } = require('./products');
 
 async function dropTables() {
     // drop all tables, in the correct order

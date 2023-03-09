@@ -1,11 +1,20 @@
 // import { fetchProducts } from "../fetch";
 
-export const Products = () => {
+const Products = (props) => {
+    
+    const products=props.products
+
 
     return (
         <div>
-            <h1>Hello World</h1>
-            
+
+        {
+            products.map(product => {
+                return (
+                    <li key={product.id}>{product.name}</li>
+                )
+            })
+        }
         </div>
     )
 }
