@@ -12,10 +12,15 @@ import { fetchProducts } from './fetch';
 const App = () => {
   const [products, setProducts] = useState([])
 
+  const ueFetchProducts = async () => {
+    setProducts(await fetchProducts())
+  }
+
   useEffect(()=>{
-    //setProducts(fetchProducts())
-    console.log(products)
-  })
+    ueFetchProducts()
+  }, [])
+
+  console.log(products)
 
   return (
     <div>
@@ -30,7 +35,7 @@ const App = () => {
           <Route path='/Footer' element={<Footer />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register />} />
-          <Route path='/Products' element={<Products />} />
+          <Route path='/Products' element={<Products products={products}/>} />
 
         </Routes>
         <Footer />
