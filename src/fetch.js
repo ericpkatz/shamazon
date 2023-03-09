@@ -85,7 +85,7 @@ export const fetchAllProducts = async () =>{
 
 export const fetchSingleView = async (token, name, price, description) =>{
     try{
-        const response = await fetch('/api/:id',{
+        const response = await fetch('/api/products/:id',{
             headers:{
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
