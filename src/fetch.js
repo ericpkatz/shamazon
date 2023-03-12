@@ -97,18 +97,14 @@ export const fetchAllProducts = async () =>{
         }
 }
 
-export const fetchSingleView = async (token, name, price, description) =>{
+export const fetchSingleView = async (id) =>{
     try{
-        const response = await fetch('/api/:id',{
+
+        const response = await fetch(`/api/products/${id}`,{
+
             headers:{
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({
-                name: name,
-                price: price,
-                description: description,
-        })
         })
         const result = await response.json();
         return result;
