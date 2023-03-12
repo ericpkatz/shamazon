@@ -1,4 +1,17 @@
-
+export const getUser = async (token) => {
+    try {
+        let response = await fetch('/api/users/me', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        });
+        let result = await response.json();
+        return result;
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 export const fetchProducts = async () => {
     try {
@@ -18,7 +31,7 @@ export const fetchRegister = async (username, password) => {
             method: 'POST',
             headers: {
                 
-                'Content-Type': 'applications/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 username: username,
@@ -37,7 +50,7 @@ export const fetchLogin = async (username, password) => {
         const response = await fetch('/api/users/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'applications/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 username: username,

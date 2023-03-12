@@ -20,7 +20,7 @@ return (
                 const res = await fetchLogin(username, password);
                 console.log(res);
                 if(!res.error) {
-                    window.localStorage.setItem('token', res.token);
+                    window.localStorage.setItem('token', res);
                     const redirHome = () => {
                         window.location.href ='/'
                     }
