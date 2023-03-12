@@ -5,7 +5,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import HomeBody from './components/HomeBody';
 import { fetchProducts } from './fetch';
 import SingleProduct from './components/SingleProduct';
-
+import { getUser } from './fetch';
 
 
 
