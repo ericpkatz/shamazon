@@ -2,6 +2,18 @@ const client = require('./client');
 const jwt = require('jsonwebtoken');
 const JWT = process.env.JWT;
 
+const getUserByUsername = async ({username}) => {
+  try {
+    const { rows: [user]} = await client.query(`
+    SELECT *
+    FROM users
+    WHERE username = $1
+    `, [username])
+    return user;
+  } catch (error) {
+    console.error('error getting user by username')
+  }
+}
 
 const createUser = async({ username, password }) => {
   console.log(username,password)
@@ -20,7 +32,7 @@ const createUser = async({ username, password }) => {
 }
 
 const getUserByToken = async(token) => {
-  const payload = await jwt.verify(token, JWT);
+  const payload = await jwt.verify(token, process.env.JWT_SECRET);
   const SQL = `
     SELECT users.*
     FROM users
@@ -39,7 +51,7 @@ const getUserByToken = async(token) => {
 
 const authenticate = async({ username, password }) => {
   const SQL = `
-    SELECT id
+    SELECT id, username
     FROM users
     WHERE username = $1 and password = $2
   `;
@@ -50,10 +62,11 @@ const authenticate = async({ username, password }) => {
     error.status = 401;
     throw error;
   }
-  return jwt.sign({ id: response.rows[0].id }, JWT);
+  return jwt.sign({ id: response.rows[0].id, username: response.rows[0].username }, process.env.JWT_SECRET);
 }
 
 module.exports = {
+  getUserByUsername,
   createUser,
   authenticate,
   getUserByToken
