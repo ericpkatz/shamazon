@@ -6,7 +6,8 @@ const jwt = require("jsonwebtoken");
 
 
 const { tokenAuth, sliceToken } = require("./utils");
-const { createUser, getUserByUsername, authenticate } = require("../db/users");
+const { createUser, getUserByUsername, authenticate, getUserByToken } = require("../db/users");
+const { token } = require("morgan");
 
 
 router.get('/health', async (req, res, next) => {
@@ -134,8 +135,8 @@ router.get('/me', tokenAuth, async (req, res, next) => {
 
     try{
      const userInfo = sliceToken(req);
-    
-     const user = await getUserByUsername(userInfo.username)
+    console.log(userInfo)
+     const user = await getUserByToken(userInfo)
    
      if (user) {
        res.send({
