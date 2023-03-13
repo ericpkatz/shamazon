@@ -1,10 +1,26 @@
+import React from 'react';
+import {fetchSingleView} from "../fetch";
 
-const SingleProduct = () => {
+const SingleProduct = (props) => {
+    const products = props.products;
 
     return (
         <div>
-            <h1>Hello World</h1>
+            {
+                products.map(product => {
+        return (
+            <div>
+            <div>{product.name}</div>
+            <div>Price: ${product.price}</div>
+            <div>Description: {product.description}</div>
+            <div>Shipping: {product.shipping}</div>
+            <div>Weight: {product.weight}lb</div>
+            <div>Picture: {product.picture}</div>
+            </div>
+        )
+                })
             
+            }
         </div>
     )
 }
