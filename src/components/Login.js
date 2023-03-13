@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { fetchLogin } from "../fetch";
 
 
-const Login = (props) => {
+const Login = () => {
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
@@ -51,15 +51,6 @@ return (
     )
 
 
-}
-
-export const Logout = (props) => {
-    const {user} = props;
-return { 
-    if(props) { 
-    <button classname='logout-container'onClick={ logout }>Logout</button>
-        }
-    }
 }
 
 export default Login

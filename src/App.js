@@ -41,7 +41,12 @@ const App = () => {
   return (
     <div>
       <>
-
+        <div className='logout-container'>
+        { user.username ? <><div className='user'>
+              <p>Hi {user.username}!</p></div>
+            
+            <button className='logout-btn' onClick={ logout }>Logout</button></>: null}
+        </div>
 
         <Header />
         <Routes>
@@ -49,7 +54,7 @@ const App = () => {
           <Route path='' element={<HomeBody />} />
           <Route path='/Header' element={<Header />} />
           <Route path='/Footer' element={<Footer />} />
-          <Route path='/Login' element={<Login user={user}/>} />
+          <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register setUser ={setUser}/>} />
           <Route path='/Products' element={<Products products={products}/>} />
 
