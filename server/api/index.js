@@ -9,8 +9,8 @@ router.get('/health', async (req, res, next) => {
 const usersRouter = require('./users')
 router.use('/users', usersRouter)
 
-const cartsRouter = require('./cart');
-router.use('/carts', cartsRouter);
+//const cartsRouter = require('./cart');
+//router.use('/carts', cartsRouter);
 
 // ROUTER: /api/products
 const productsRouter = require('./products');

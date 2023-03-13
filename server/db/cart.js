@@ -28,7 +28,17 @@ const getCartByUserId = async ({userId}) => {
     return cart
 }
 
+const addProductToCart = async ({ cartId, productId}) => {
+    const {rows: added} = await client.query(`
+        INSERT INTO cart_products(product_id, cart_id)
+        VALUES($1, $2)
+        RETURNING *
+    `, [productId, cartId])
+    return
+}
+
 module.exports = {
     createCart,
-    getCartByUserId
+    getCartByUserId,
+    addProductToCart
 }
