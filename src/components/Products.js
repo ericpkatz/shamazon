@@ -10,12 +10,20 @@ const Products = (props) => {
         {
             products.map(product => {
                 return (
-                    <ul className="product">
-                        <li key={product.id}>{product.name}</li>
-                        <li key={product.id}>${product.price}.00</li>
-                        <li key={product.id}>{product.description}</li>
-                        <li key={product.id}>Shipping Details: {product.shipping}</li>
-                    </ul>
+                        <ul>
+                            <div className="product">
+                                <div className="image">
+                                    <li key={product.id}><img src={product.picture} alt="product_image" width='225px'height='275px'/></li>
+                                </div>
+                                <div className="info">
+                                    <div className="info_sub1">
+                                        <li className='name' key={product.id}>{product.name}</li>
+                                        <li className='price' key={product.id}>${product.price}.00</li>
+                                        <li className='shipping' key={product.id}>Shipping Details: {product.shipping}</li>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
                 )
             })
         }
