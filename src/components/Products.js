@@ -11,7 +11,9 @@ const Products = (props) => {
         {
             products.map(product => {
                 return (
-                    <li key={product.id}>{product.name}</li>
+                    <div>
+                        <li key={product.id}>{product.name}</li>
+                    </div>
                 )
             })
         }
