@@ -40,8 +40,8 @@ const App = () => {
 
   return (
     <div>
-       <button onClick={ logout }>Logout</button>
       <>
+
 
         <Header />
         <Routes>
@@ -49,7 +49,7 @@ const App = () => {
           <Route path='' element={<HomeBody />} />
           <Route path='/Header' element={<Header />} />
           <Route path='/Footer' element={<Footer />} />
-          <Route path='/Login' element={<Login />} />
+          <Route path='/Login' element={<Login user={user}/>} />
           <Route path='/Register' element={<Register setUser ={setUser}/>} />
           <Route path='/Products' element={<Products products={products}/>} />
 

@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 
 const { tokenAuth, sliceToken } = require("./utils");
 const { createUser, getUserByUsername, authenticate, getUserByToken } = require("../db/users");
-const { token } = require("morgan");
+
 
 
 router.get('/health', async (req, res, next) => {
