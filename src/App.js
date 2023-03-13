@@ -45,7 +45,7 @@ const App = () => {
 
         <Header />
         <Routes>
-          <Route path='/products/:id' element = {<SingleProduct/>} />
+          <Route path='/products/:id' element = {<SingleProduct products={products}/>} />
           <Route path='' element={<HomeBody />} />
           <Route path='/Header' element={<Header />} />
           <Route path='/Footer' element={<Footer />} />
