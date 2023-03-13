@@ -7,13 +7,15 @@ const Products = (props) => {
 
     return (
         <div>
-
         {
             products.map(product => {
                 return (
-                    <div>
+                    <ul className="product">
                         <li key={product.id}>{product.name}</li>
-                    </div>
+                        <li key={product.id}>${product.price}.00</li>
+                        <li key={product.id}>{product.description}</li>
+                        <li key={product.id}>Shipping Details: {product.shipping}</li>
+                    </ul>
                 )
             })
         }
