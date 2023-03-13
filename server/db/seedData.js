@@ -8,6 +8,7 @@ const {
   const {
     createProduct
   } = require('./products');
+const { createCart } = require('./cart')
 
 async function dropTables() {
     // drop all tables, in the correct order
@@ -41,7 +42,8 @@ async function createTables() {
     
       CREATE TABLE carts(
         id SERIAL PRIMARY KEY,
-        user_id INTEGER REFERENCES users(id) 
+        user_id INTEGER REFERENCES users(id) NOT NULL,
+        is_active BOOLEAN DEFAULT true
       );
     
       CREATE TABLE products(
@@ -75,16 +77,24 @@ async function createTables() {
 
   async function createInitialUsers() {
     try {
-        const usersToCreate = [
-            {username: 'moe',password: 'moe_password'},
-          { username: "sandra", password: "sandra123" },
-          { username: "glamgal", password: "glamgal123" },
-        ]
-        const users = await Promise.all(usersToCreate.map(createUser))
+        
+        const [moe, lucy, glam] = await Promise.all([
+          createUser({username: 'moe',password: 'moe_password'}),
+          createUser({ username: "sandra", password: "sandra123" }),
+          createUser({ username: "glamgal", password: "glamgal123" })
+        ])
     
         console.log("Users created:")
-        console.log(users)
+        console.log([moe,lucy,glam])
         console.log("Finished creating users!")
+
+        const [moeCart, lucyCart, glamCart] = await Promise.all([
+          createCart({ user_id: moe.id }),
+          createCart({user_id: lucy.id}),
+          createCart({user_id:glam.id})
+        ])
+
+        console.log("created carts")
       } catch (error) {
         console.error("Error creating users!")
         throw error
@@ -152,12 +162,20 @@ async function createTables() {
         const products = await Promise.all(productsToCreate.map(createProduct))
 
         console.log("products created:")
-        console.log(products)
+        
 
         console.log("Finished creating products.")
     } catch (error) {
         console.log("error creating products")
         throw error
+    }
+  }
+
+  async function createInitialCarts () {
+    try {
+      
+    } catch (error) {
+      
     }
   }
 
