@@ -15,7 +15,7 @@ async function createCart({user_id}){
 }
 
 const getCartByUserId = async ({userId}) => {
-    const {rows: cart} = await client.query(`
+    const {rows: [cart]} = await client.query(`
     SELECT * FROM carts
     WHERE user_id = $1
     `, [userId])
@@ -24,7 +24,7 @@ const getCartByUserId = async ({userId}) => {
     LEFT JOIN products ON cart_products.product_id = products.id
     WHERE cart_products.cart_id = $1
     `, [cart.id])
-    cart.products= products
+    cart.products = products
     return cart
 }
 
@@ -34,7 +34,7 @@ const addProductToCart = async ({ cartId, productId}) => {
         VALUES($1, $2)
         RETURNING *
     `, [productId, cartId])
-    return
+    return added
 }
 
 module.exports = {
