@@ -1,5 +1,6 @@
 // import { fetchProducts } from "../fetch";
 import {Link} from "react-router-dom"
+import { fetchAddProductToCart } from "../fetch"
 
 const Products = (props) => {
     
@@ -23,6 +24,14 @@ const Products = (props) => {
                                         <li className='shipping' key={product.id}>Shipping Details: {product.shipping}</li>
                                     </div>
                                 </div>
+                                <button
+                                    onClick={async () => {
+                                        const updatedCart = await fetchAddProductToCart(product.id)
+                                        console.log('added to cart')
+                                    }}
+                                >
+                                    Add to Cart
+                                </button>
                             </div>
                         </ul>
                 )

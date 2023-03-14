@@ -1,3 +1,5 @@
+
+
 export const getUser = async (token) => {
     try {
         let response = await fetch('/api/users/me', {
@@ -114,3 +116,16 @@ export const fetchSingleView = async (id) =>{
     }
 }
 
+export const fetchAddProductToCart = async (productId) => {
+    const token = window.localStorage.getItem('token');
+    if (!token) return;
+    const response = await fetch(`/api/carts/${productId}`, {
+        method: "POST",
+        headers: { 
+            'Content-Type': "application/json",
+            Authorization: token,
+        },
+    });
+    const updatedCart = await response.json();
+    return updatedCart;   
+}

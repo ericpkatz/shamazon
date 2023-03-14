@@ -12,6 +12,7 @@ import { getUser } from './fetch';
 const App = () => {
   const [products, setProducts] = useState([]);
   let [user, setUser] = useState({});
+  const [cart, setCart] = useState({})
 
   const ueFetchProducts = async () => {
     setProducts(await fetchProducts())
@@ -47,8 +48,6 @@ const App = () => {
         <Routes>
           <Route path='/products/:id' element = {<SingleProduct products={products}/>} />
           <Route path='' element={<HomeBody />} />
-          <Route path='/Header' element={<Header />} />
-          <Route path='/Footer' element={<Footer />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register setUser ={setUser}/>} />
           <Route path='/Products' element={<Products products={products}/>} />
