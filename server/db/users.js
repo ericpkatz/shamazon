@@ -1,6 +1,6 @@
 const client = require('./client');
 const jwt = require('jsonwebtoken');
-const JWT = process.env.JWT;
+const bcrypt = require('bcrypt')
 
 const getUserByUsername = async (username) => {
   try {
@@ -16,13 +16,15 @@ const getUserByUsername = async (username) => {
 }
 
 const createUser = async({ username, password }) => {
-  console.log(username,password)
+  const saltRounds = 15;
   try {
+    const hashedPassword = await bcrypt.hash(password, saltRounds)
+
     const { rows: [user] } = await client.query(`
     INSERT INTO users(username, password) 
     VALUES($1, $2) 
     RETURNING id, username;
-  `, [username, password]);
+  `, [username, hashedPassword]);
   
   return user;
 } catch (error) {
