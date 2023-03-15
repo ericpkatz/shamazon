@@ -6,12 +6,13 @@ import HomeBody from './components/HomeBody';
 import { fetchProducts } from './fetch';
 import SingleProduct from './components/SingleProduct';
 import { getUser } from './fetch';
+import Cart from './components/Cart';
 
 
 
 const App = () => {
-  const [products, setProducts] = useState([]);
   let [user, setUser] = useState({});
+  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({})
 
   const ueFetchProducts = async () => {
@@ -24,6 +25,9 @@ const App = () => {
     if (token) {
        const user = await getUser(token);
       setUser(user);
+      fetch(`/api/carts/${user.id}`)
+        .then((response) => response.json())
+        .then((cart) => setCart(cart)) 
     }
   };
 
@@ -32,9 +36,12 @@ const App = () => {
     setUser({});
   }
 
+  console.log("PRODUCTS: ", products)
+  console.log("CART: ", cart)
+
   useEffect(()=>{
-    ueFetchProducts()
     checkToken();
+    ueFetchProducts()
   }, [])
 
   console.log(products)
@@ -44,13 +51,14 @@ const App = () => {
        <button onClick={ logout }>Logout</button>
       <>
 
-        <Header />
+        <Header cart={cart}/>
         <Routes>
           <Route path='/products/:id' element = {<SingleProduct products={products}/>} />
           <Route path='' element={<HomeBody />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register setUser ={setUser}/>} />
           <Route path='/Products' element={<Products products={products}/>} />
+          <Route path='/cart' element={<Cart cart={cart}/>}/>
 
         </Routes>
         <Footer />

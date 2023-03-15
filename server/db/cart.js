@@ -29,6 +29,20 @@ const getCartByUserId = async ({userId}) => {
 }
 
 const addProductToCart = async ({ cartId, productId}) => {
+
+    const {rows: check} = await client.query(`
+        SELECT * FROM cart_products
+        WHERE cart_id = $1 and product_id = $2
+    `, [cartId, productId])
+
+    if (check.length) {
+        await client.query(`
+            UPDATE cart_products SET quantity = quantity + 1 
+            WHERE cart_id = $1 and product_id = $2
+        `, [cartId, productId]);
+        return
+    }
+
     const {rows: added} = await client.query(`
         INSERT INTO cart_products(product_id, cart_id)
         VALUES($1, $2)

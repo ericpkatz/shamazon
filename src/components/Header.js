@@ -3,7 +3,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 
-const Header = () => {
+const Header = (props) => {
+
+    const cart = props.cart
 
     return (
 
@@ -40,10 +42,12 @@ const Header = () => {
                                 </div>
                             </div>
                             <div className='checkout'>
+                                <Link to='/cart'>
                                 <div className='checkoutbtn'>
                                     <img src='/images/checkout.png' alt='checkoutbtn' width='30px' />
-                                    <li>Cart</li>
+                                    <li>Cart ({cart.products?.length})</li>
                                 </div>
+                                </Link>
                             </div>
                         </ol>
                     </div>
