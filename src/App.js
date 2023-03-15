@@ -54,7 +54,7 @@ const App = () => {
     <div>
       <>
 
-        <Logout />
+    { !!user.id  && <Logout /> }
         <Header cart={cart}/>
 
         <Routes>
