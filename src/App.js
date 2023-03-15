@@ -6,7 +6,7 @@ import HomeBody from './components/HomeBody';
 import { fetchProducts } from './fetch';
 import SingleProduct from './components/SingleProduct';
 import { getUser } from './fetch';
-
+import Logout from './components/Logout';
 
 
 const App = () => {
@@ -21,15 +21,13 @@ const App = () => {
   const checkToken = async () => {
     const token = window.localStorage.getItem('token');
     if (token) {
-       const user = await getUser(token);
-      setUser(user);
+       const newUser = await getUser(token);
+      setUser(newUser);
     }
   };
 
-  const logout = () => {
-    window.localStorage.removeItem('token');
-    setUser({});
-  }
+
+
 
   useEffect(()=>{
     ueFetchProducts()
@@ -41,13 +39,8 @@ const App = () => {
   return (
     <div>
       <>
-        <div className='logout-container'>
-        { user.username ? <><div className='user'>
-              <p>Hi {user.username}!</p></div>
-            
-            <button className='logout-btn' onClick={ logout }>Logout</button></>: null}
-        </div>
 
+        <Logout />
         <Header />
         <Routes>
           <Route path='/products/:id' element = {<SingleProduct/>} />

@@ -18,8 +18,7 @@ router.post("/register", async (req, res, next) => {
     
     const {username, password} = req.body
     console.log(req.body)
-    // // eslint-disable-next-line no-undef
-    // res.send(error)
+
 
     try{
         
@@ -60,40 +59,6 @@ router.post("/register", async (req, res, next) => {
     }
 });
 
-// Eric's Code
-
-// const {username, password} = req.body;
-// try {
-//     if (password.length <= 7) {
-//         res.send ({
-//            error: 'Short Password',
-//            message: 'Your password is too short!',
-//            name: username, 
-//            status: 400
-//         });
-//     }
-
-// const newUser = await createUser({username, password});
-// if (!newUser) {
-//     res.send ({
-//         error: 'Taken Username',
-//         message: `${username} is taken!`,
-//         name: username,
-//         status: 401
-//     });
-// } else {
-//     const {id} = newUser;
-//     const token = jwt.sign (
-//         {id: id, username},
-//         process.env.jwt
-//     );
-//     res.send({
-//         message: 'You have succefully registered!',
-//         token: token,
-//         user: {id:id, username:username}
-//     })
-// }
-
 router.post('/login', async(req, res, next) => {
   const {username, password} = req.body;
   
@@ -108,7 +73,8 @@ router.post('/login', async(req, res, next) => {
         try {
           const {username, password} = req.body;
           const token = await authenticate({username, password});
-        
+    
+
           if (token) {
               res.send({ 
                 message: "You're logged in!",
@@ -134,11 +100,11 @@ router.post('/login', async(req, res, next) => {
 router.get('/me', tokenAuth, async (req, res, next) => {
 
     try{
-     const userInfo = sliceToken(req);
+     const userInfo = sliceToken();
     console.log(userInfo)
      const user = await getUserByToken(userInfo)
    
-     if (user) {
+     if (user) { 
        res.send({
          id: user.id, 
          username: user.username
