@@ -62,39 +62,22 @@ router.post("/register", async (req, res, next) => {
 router.post('/login', async(req, res, next) => {
   const {username, password} = req.body;
   
-  if (!username || !password) {
-        next({ 
-            name: 'Missing Credentials Error',
-            message: 'User not found'
-        });
-      } else {
+  try {
+    const {username, password} = req.body;
+    const token = await authenticate({username, password});
 
-        
-        try {
-          const {username, password} = req.body;
-          const token = await authenticate({username, password});
-    
-
-          if (token) {
-              res.send({ 
-                message: "You're logged in!",
-              token: token,
-              user: {
-                username: username
-              },
-            })
-          } else {
-            next ({
-              name: "Incorrect Credetials Error",
-              message: "Username or password is incorrect"
-            })
-          }
-        } catch (error) {
-          console.error(error)
-    }
-        
-    }
-
+    res.send({ 
+      message: "You're logged in!",
+      token: token,
+      user: {
+        username: username
+      },
+    });
+  }
+  catch(ex){
+    console.log(ex);
+    next(ex);
+  }
 });
 
 router.get('/me', tokenAuth, async (req, res, next) => {

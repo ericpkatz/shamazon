@@ -13,13 +13,14 @@ router.post('/', async(req, res, next)=> {
     res.send({ token });
   }
   catch(ex){
+    console.log(ex);
     next(ex);
   }
 });
 
 router.get('/', async(req, res, next)=> {
   try {
-    res.send(await getUserByToken(req.headers.authorization)); 
+    res.send(await getUserByToken(req.headers.authorization.slice('Bearer '.length))); 
   }
   catch(ex){
     next(ex);

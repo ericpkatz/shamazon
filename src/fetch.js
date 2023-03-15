@@ -2,7 +2,7 @@
 
 export const getUser = async (token) => {
     try {
-        let response = await fetch('/api/users/me', {
+        let response = await fetch('/api/auth', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`

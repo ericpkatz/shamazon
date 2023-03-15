@@ -29,7 +29,7 @@
     "build:dev": "webpack --mode=development --watch",
     "seed:dev": "nodemon ./server/db/seed.js",
     "seed": "node ./server/db/seed.js",
-    "server:dev": "nodemon ./server/server.js --ignore dist/ --ignore src/",
+    "server:dev": "JWT_SECRET=foo nodemon ./server/server.js --ignore dist/ --ignore src/",
     "server": "node ./server/server.js",
     "start:dev": "npm run server:dev & npm run build:dev"
   }

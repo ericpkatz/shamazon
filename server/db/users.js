@@ -53,13 +53,12 @@ const getUserByToken = async(token) => {
 
 const authenticate = async({ username, password }) => {
   const SQL = `
-    SELECT id, username
+    SELECT id, username, password
     FROM users
-    WHERE username = $1 and password = $2
+    WHERE username = $1
   `;
-  const response = await client.query(SQL, [ username, password]);
-  console.log(response);
-  if(!response.rows.length){
+  const response = await client.query(SQL, [ username]);
+  if(!response.rows.length || !(await bcrypt.compare(password, response.rows[0].password))){
     const error = Error('not authorized');
     error.status = 401;
     throw error;

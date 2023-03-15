@@ -6,6 +6,8 @@ router.get('/health', async (req, res, next) => {
 });
 
 // ROUTER: /api/users
+const auth = require('./auth')
+router.use('/auth', auth)
 const usersRouter = require('./users')
 router.use('/users', usersRouter)
 
