@@ -6,6 +6,7 @@ import { fetchLogin } from "../fetch";
 
 
 const Login = () => {
+    
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
 
@@ -41,7 +42,8 @@ return (
             <div>
                 <nav>
                     <Link to='/Register'>
-                        Dont have an account? Click here to Register!
+                        <p className="login-text">Dont have an account?</p>
+                        <p className="login-text">Click here to Register!</p>
                     </Link>
                 </nav>
             </div>
